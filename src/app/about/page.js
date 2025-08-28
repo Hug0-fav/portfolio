@@ -1,79 +1,81 @@
 "use client";
 
-import Image from "next/image";
+import { ArrowRight, Palette, Sparkles, Globe } from "lucide-react";
 import Link from "next/link";
 
-export default function AboutPage() {
+export default function AboutSection() {
   return (
-    <main className="max-w-4xl mx-auto px-4 md:px-8 py-12">
-      <section className="text-center">
-        <h1 className="text-3xl font-bold text-slate-100 mb-4">
-          Hey, I&apos;m Favor 👋
-        </h1>
+    <section className="w-full px-6 md:px-16 lg:px-32 py-16 bg-background text-foreground">
+      {/* Intro */}
+      <section className="max-w-4xl px-6 py-12">
+        <h2 className="text-4xl md:text-5xl font-bold text-indigo-600 mb-6">
+          Behind My Projects
+        </h2>
+        <p className="text-lg md:text-xl text-white leading-relaxed">
+          I don’t just build interfaces, I build experiences. For me, code is a
+          craft — a way to shape ideas into tools that people can actually feel
+          and use. My goal is always simple: clarity, purpose, and meaning in
+          every line I write.
+        </p>
+      </section>
 
-        <div className="relative w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden border-2 border-slate-300">
-          <Image
-            src="/fiverr.jpg"
-            alt="My profile photo"
-            fill
-            className="object-cover"
-          />
+      {/* What drives my work */}
+      <section className="max-w-6xl mx-auto px-6 py-16">
+        <h2 className="text-3xl md:text-4xl font-bold text-indigo-600 mb-10">
+          What Drives My Work
+        </h2>
+
+        <div className="grid md:grid-cols-3 gap-8">
+          {/* Creativity */}
+          <div className="shadow-md rounded-xl p-6 border-l-4 border-indigo-500">
+            <h3 className="text-2xl font-semibold text-indigo-700 mb-3">
+              Creativity as Craft
+            </h3>
+            <p className="text-gray-300 leading-relaxed text-lg">
+              Creativity is more than expression—it’s how I approach every
+              challenge. I treat each project like a living canvas, where code
+              and design merge into meaningful experiences. It’s not about
+              decoration, but about finding beauty in function and purpose.
+            </p>
+          </div>
+
+          {/* Simplicity */}
+          <div className="shadow-md rounded-xl p-6 border-l-4 border-green-500">
+            <h3 className="text-2xl font-semibold text-green-700 mb-3">
+              Simplicity & Clarity
+            </h3>
+            <p className="text-gray-300 leading-relaxed text-lg">
+              In a world that often feels cluttered, I value simplicity. To me,
+              simplicity isn’t emptiness—it’s guidance, calm, and focus. I aim
+              to remove what distracts, so what matters can speak clearly,
+              quietly, and confidently.
+            </p>
+          </div>
+
+          {/* Impact */}
+          <div className="shadow-md rounded-xl p-6 border-l-4 border-purple-500">
+            <h3 className="text-2xl font-semibold text-purple-700 mb-3">
+              Impact & Connection
+            </h3>
+            <p className="text-gray-300 leading-relaxed text-lg">
+              Technology, at its heart, is a bridge. What I build isn’t just
+              tools— it’s connections between people, ideas, and possibilities.
+              Impact is not measured in trends, but in how deeply something
+              serves and lasts.
+            </p>
+          </div>
         </div>
 
-        <p className="text-slate-400 text-base leading-relaxed mb-6 max-w-xl mx-auto">
-          I&apos;m Favor, a frontend developer with long-term ambitions in
-          full-stack innovation. My journey began with pure curiosity—tinkering
-          with HTML and CSS, making the web just a little more beautiful one div
-          at a time. Over time, that curiosity turned into a serious passion and
-          a commitment to solving real-world problems with clean, intuitive
-          interfaces.
-        </p>
-
-        <p className="text-slate-400 text-base leading-relaxed mb-6 max-w-xl mx-auto">
-          These days, I&apos;m building with tools like React, Next.js,
-          Supabase, and Tailwind CSS—crafting experiences that are not only
-          functional but also fun. I&apos;m especially proud of learning how to
-          use the GitHub API (late to the party, I know 😅), which now powers a
-          dynamic portfolio that updates itself like a personal assistant.
-        </p>
-
-        <p className="text-slate-400 text-base leading-relaxed mb-6 max-w-xl mx-auto">
-          I&apos;m not just coding for today—I&apos;m building a career around
-          meaningful creation. Whether it&apos;s collaborating with teams,
-          launching solo projects, or mentoring others, I see development as
-          both a craft and a long game. Always learning. Always iterating.
-        </p>
-
-        <p className="text-slate-400 text-base leading-relaxed mb-10 max-w-xl mx-auto italic">
-          Off the screen, I&apos;m often thinking about what to build next or
-          helping other creatives bring their digital ideas to life. Clean code,
-          delightful UIs, and long-term impact—those are my goals.
-        </p>
-
-        <Link
-          href="mailto:favourugochukwu548@gmail.com"
-          className="inline-block bg-blue-600 text-white text-sm font-medium px-6 py-2 rounded-lg hover:bg-blue-700 transition"
-        >
-          Hire Me
-        </Link>
+        <div className="mt-8 text-right">
+          <Link
+            href="/projects"
+            className="inline-flex items-center text-indigo-600 font-medium group hover:text-indigo-800"
+          >
+            Explore my projects
+            <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
+          </Link>
+        </div>
       </section>
-
-      <section className="mt-16">
-        <h2 className="text-xl font-semibold text-slate-200 mb-4 text-center">
-          Tools & Tech I Work With
-        </h2>
-        <ul className="flex flex-wrap gap-4 justify-center text-sm text-slate-600">
-          <li className="bg-slate-100 px-3 py-1 rounded-md">React</li>
-          <li className="bg-slate-100 px-3 py-1 rounded-md">Next.js</li>
-          <li className="bg-slate-100 px-3 py-1 rounded-md">Supabase</li>
-          <li className="bg-slate-100 px-3 py-1 rounded-md">
-            Styled-Components
-          </li>
-          <li className="bg-slate-100 px-3 py-1 rounded-md">Tailwind CSS</li>
-          <li className="bg-slate-100 px-3 py-1 rounded-md">Express.js</li>
-          <li className="bg-slate-100 px-3 py-1 rounded-md">Node.js</li>
-        </ul>
-      </section>
-    </main>
+    </section>
   );
 }

@@ -1,7 +1,7 @@
-import "@/app/__styles/globals.css";
+import "@/styles/globals.css";
 
-import Footer from "./__component/Footer";
-import Header from "./__component/Header";
+import Footer from "../components/Footer";
+import Header from "../components/Header";
 
 export const metadata = {
   title: "Portfolio",

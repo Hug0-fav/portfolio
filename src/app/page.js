@@ -1,13 +1,9 @@
-import "@/app/__styles/globals.css";
-import HomeHero from "./__component/HomeHero";
-import HomeAbout from "./__component/HomeAbout";
-import FeaturedProjects from "./__component/FeaturedProject";
+import "@/styles/globals.css";
+import HomeHero from "../components/HomeHero";
 export default function Page() {
   return (
     <main>
       <HomeHero />
-      <HomeAbout />
-      <FeaturedProjects />
     </main>
   );
 }

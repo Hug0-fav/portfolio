@@ -1,4 +1,4 @@
-const ProjectData = [
+const rojectData = [
   {
     name: "store",
     image: "/screenshot/store.jpg",
