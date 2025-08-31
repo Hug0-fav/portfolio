@@ -15,7 +15,7 @@ function Footer() {
           </p>
           <div className="flex justify-center md:justify-start mt-4 space-x-4">
             <a
-              href="https://github.com/hug0-fav"
+              href="https://github.com/Hug0-fav"
               target="_blank"
               className="hover:text-blue-600"
             >
