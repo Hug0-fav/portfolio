@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+// import { useState } from "react";
 import { motion } from "framer-motion";
 import { Typewriter } from "react-simple-typewriter";
 
@@ -12,7 +12,7 @@ export default function AIAnimatedHero() {
     "const favouriteDev = true;",
   ];
 
-  const [hovered, setHovered] = useState(false);
+  // const [hovered, setHovered] = useState(false);
 
   return (
     <motion.div
@@ -21,8 +21,8 @@ export default function AIAnimatedHero() {
       transition={{ duration: 0.6 }}
       whileHover={{ scale: 1.02, boxShadow: "0 10px 20px rgba(0,255,255,0.1)" }}
       className="mt-10 p-6 bg-[#111111] rounded-xl max-w-3xl mx-auto shadow-lg border-l-4 border-cyan-500"
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
+      // onMouseEnter={() => setHovered(true)}
+      // onMouseLeave={() => setHovered(false)}
     >
       <p className="text-gray-400 text-lg md:text-xl font-mono min-h-[48px]">
         <Typewriter
@@ -36,7 +36,7 @@ export default function AIAnimatedHero() {
         />
       </p>
 
-      {hovered && (
+      {/* {hovered && (
         <motion.div
           initial={{ opacity: 0, y: 6 }}
           animate={{ opacity: 1, y: 0 }}
@@ -44,7 +44,7 @@ export default function AIAnimatedHero() {
         >
           Fun fact: I love clean, scalable code.
         </motion.div>
-      )}
+      )} */}
     </motion.div>
   );
 }

@@ -41,7 +41,7 @@ export default function ContactPage() {
           {/* Social Links */}
           <div className="flex items-center justify-center gap-6">
             <a
-              href="https://github.com/Hug0-fav"
+              href="https://github.com/hugo-fav"
               target="_blank"
               className="text-gray-400 hover:text-white transition"
             >

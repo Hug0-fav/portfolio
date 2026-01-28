@@ -52,7 +52,7 @@ export default function Body() {
           </Link>
 
           <Link
-            href="https://github.com/yourgithub"
+            href="https://github.com/hugo-fav"
             target="_blank"
             className="px-8 py-3 border border-gray-600 rounded-md hover:bg-gray-800 transition"
           >
@@ -183,7 +183,7 @@ export default function Body() {
             items={[
               "Git & Version Control",
               "Vercel Deployment",
-              "Learning: Stripe / Paystack",
+              // "Learning: Stripe / Paystack",
             ]}
           />
         </div>

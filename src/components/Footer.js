@@ -26,7 +26,7 @@ export default function Footer() {
           </p>
           <div className="flex mt-4 space-x-4">
             <Link
-              href="https://github.com/Hug0-fav"
+              href="https://github.com/hugo-fav"
               target="_blank"
               className="hover:text-cyan-400 transition"
             >
