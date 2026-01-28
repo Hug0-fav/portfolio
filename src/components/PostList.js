@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import Link from "next/link";
+import LoadingSpinner from "./LoadingSpinner";
 
 export default function PostList() {
   const [posts, setPosts] = useState([]);
@@ -29,53 +30,56 @@ export default function PostList() {
   }, []);
 
   return (
-    <div className="max-w-2xl mx-auto mt-20 space-y-6">
-      {loading ? (
-        <p className="text-gray-400">Loading posts...</p>
-      ) : posts.length > 0 ? (
-        posts.map((post) => (
-          <div
-            key={post.id}
-            className="p-6 rounded-lg bg-gray-900 border border-gray-700 hover:bg-gray-800 transition shadow"
-          >
-            {/* Title */}
-            <h2 className="text-2xl font-semibold text-white mb-2">
-              {post.title}
-            </h2>
+    <div className="max-w-3xl mx-auto mt-20 space-y-6">
+  {loading ? (
+    <LoadingSpinner text="Loading posts..." />
+  ) : posts.length > 0 ? (
+    posts.map((post) => (
+      <div
+        key={post.id}
+        className="p-6 rounded-xl bg-slate-800/60 border border-slate-700 hover:bg-slate-800 transition shadow-sm"
+      >
+        {/* Title */}
+        <h2 className="text-xl font-semibold text-gray-100 mb-1">
+          {post.title}
+        </h2>
 
-            {/* Date & Read time */}
-            <p className="text-sm text-gray-400 mb-2">
-              {new Date(post.created_at).toLocaleDateString()} •{" "}
-              {calculateReadTime(post.content)}
-            </p>
+        {/* Date & Read time */}
+        <p className="text-sm text-gray-400 mb-3">
+          {new Date(post.created_at).toLocaleDateString()} •{" "}
+          {calculateReadTime(post.content)}
+        </p>
 
-            {/* Categories */}
-            <div className="flex flex-wrap gap-2 mb-3">
-              {post.category?.split(",").map((cat, i) => (
-                <span
-                  key={i}
-                  className="px-2 py-1 text-xs font-medium rounded bg-gray-800 text-gray-300"
-                >
-                  {cat.trim()}
-                </span>
-              ))}
-            </div>
+        {/* Preview (this leads emotionally) */}
+        <p className="text-gray-200 leading-relaxed mb-4 line-clamp-3">
+          {post.content}
+        </p>
 
-            {/* Preview */}
-            <p className="text-gray-300 mb-4 line-clamp-3">{post.content}</p>
-
-            {/* Read more */}
-            <Link
-              href={`/blog/${post.id}`}
-              className="text-indigo-400 hover:underline text-sm"
+        {/* Categories */}
+        <div className="flex flex-wrap gap-2 mb-4">
+          {post.category?.split(",").map((cat, i) => (
+            <span
+              key={i}
+              className="px-2 py-1 text-xs uppercase tracking-wide rounded bg-slate-700/60 text-slate-300"
             >
-              Read more →
-            </Link>
-          </div>
-        ))
-      ) : (
-        <p className="text-gray-400">No posts yet.</p>
-      )}
-    </div>
+              {cat.trim()}
+            </span>
+          ))}
+        </div>
+
+        {/* Read more */}
+        <Link
+          href={`/blog/${post.id}`}
+          className="inline-block text-indigo-400 text-sm font-medium hover:text-indigo-300 transition"
+        >
+          Read more →
+        </Link>
+      </div>
+    ))
+  ) : (
+    <p className="text-gray-400">No posts yet.</p>
+  )}
+</div>
+
   );
 }

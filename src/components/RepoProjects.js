@@ -2,11 +2,13 @@
 
 import { useEffect, useState } from "react";
 import { Star, GitFork, Code } from "lucide-react";
+import { motion } from "framer-motion";
+import LoadingSpinner from "./LoadingSpinner";
 
 export default function ProjectsPage() {
   const [repos, setRepos] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [viewFilter, setViewFilter] = useState("all"); // "all" or "forks"
+  const [viewFilter, setViewFilter] = useState("all");
   const [languageFilter, setLanguageFilter] = useState("all");
 
   const fetchRepos = async () => {
@@ -29,12 +31,10 @@ export default function ProjectsPage() {
 
   const filteredRepos = repos
     .filter(
-      (repo) => viewFilter === "all" || (viewFilter === "forks" && repo.fork)
+      (repo) => viewFilter === "all" || (viewFilter === "forks" && repo.fork),
     )
     .filter(
-      (repo) =>
-        languageFilter === "all" ||
-        (repo.language && repo.language === languageFilter)
+      (repo) => languageFilter === "all" || repo.language === languageFilter,
     )
     .sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
 
@@ -43,58 +43,49 @@ export default function ProjectsPage() {
     ...Array.from(new Set(repos.map((r) => r.language).filter(Boolean))),
   ];
 
-  // Helper to truncate text
   const truncate = (str, n) =>
     str?.length > n ? str.substr(0, n) + "..." : str;
 
   return (
-    <main className="min-h-screen bg-[url('/background.jpg')] bg-cover bg-center text-gray-100 px-6 md:px-20 py-16">
-      <section className="max-w-5xl mx-auto">
-        {/* Header with Refresh */}
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
-          <h1 className="text-4xl md:text-5xl font-bold text-indigo-500 mb-4 md:mb-0">
-            Projects
-          </h1>
+    <main className="min-h-screen bg-[#0d0d0d] text-gray-100 px-6 md:px-20 py-16">
+      <section className="max-w-6xl mx-auto">
+        {/* Main Text */}
+        <p className="text-2xl md:text-2xl font-medium text-gray-500 mb-8 leading-relaxed">
+          Explore my GitHub projects.
+        </p>
+
+        {/* Filter + Refresh (right aligned) */}
+        <div className="flex justify-end mb-8 gap-4 items-center">
           <button
             onClick={fetchRepos}
             className="px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 transition"
           >
-            Refresh Data
+            Refresh
           </button>
-        </div>
-        <p className="text-gray-300 mb-8">
-          A collection of my work from GitHub, showcasing various technologies
-          and solutions I&apos;ve built over time.
-        </p>
 
-        {/* Filter Section */}
-        <div className="sticky top-16 bg-[url('/background.jpg')] z-10 flex flex-wrap items-center gap-6 mb-8 p-4 rounded-lg">
-          {/* View Filter */}
-          <div className="flex gap-4">
-            <button
-              onClick={() => setViewFilter("all")}
-              className={`pb-1 ${
-                viewFilter === "all"
-                  ? "border-b-2 border-indigo-500"
-                  : "border-b-2 border-transparent"
-              } transition`}
-            >
-              All
-            </button>
-            <button
-              onClick={() => setViewFilter("forks")}
-              className={`pb-1 ${
-                viewFilter === "forks"
-                  ? "border-b-2 border-indigo-500"
-                  : "border-b-2 border-transparent"
-              } transition`}
-            >
-              Forks
-            </button>
-          </div>
+          <div className="flex gap-4 bg-[#1b1b1b] p-3 rounded-lg shadow-sm">
+            {/* View Buttons */}
+            <div className="flex gap-2">
+              {["all", "forks"].map((f) => (
+                <button
+                  key={f}
+                  onClick={() => setViewFilter(f)}
+                  className={`pb-1 relative font-medium ${
+                    viewFilter === f ? "text-indigo-400" : "text-gray-400"
+                  }`}
+                >
+                  {f.charAt(0).toUpperCase() + f.slice(1)}
+                  {viewFilter === f && (
+                    <motion.span
+                      layoutId="underline"
+                      className="absolute -bottom-1 left-0 w-full h-0.5 bg-indigo-400"
+                    />
+                  )}
+                </button>
+              ))}
+            </div>
 
-          {/* Language Dropdown */}
-          <div>
+            {/* Language Dropdown */}
             <select
               value={languageFilter}
               onChange={(e) => setLanguageFilter(e.target.value)}
@@ -109,17 +100,20 @@ export default function ProjectsPage() {
           </div>
         </div>
 
-        {/* Repos Grid */}
+        {/* Repo Grid */}
         {loading ? (
-          <p>Loading repositories...</p>
+          <LoadingSpinner text="Loading repositories..." />
         ) : filteredRepos.length === 0 ? (
           <p>No repositories found.</p>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
             {filteredRepos.map((repo) => (
-              <div
+              <motion.div
                 key={repo.id}
-                className="bg-gray-900 p-6 rounded-lg border border-gray-700 hover:bg-gray-800 transition"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                whileHover={{ scale: 1.03 }}
+                className="bg-[#1a1a1a] p-6 rounded-xl border border-gray-700 shadow-md hover:shadow-lg transition"
               >
                 <a
                   href={repo.html_url}
@@ -130,8 +124,9 @@ export default function ProjectsPage() {
                 </a>
                 <p className="text-gray-400 mt-2">
                   {truncate(repo.description, 100) ||
-                    "No description available"}
+                    `Check out the ${repo.name} project on GitHub.`}
                 </p>
+
                 <div className="flex flex-wrap gap-3 mt-4 text-sm">
                   {repo.language && (
                     <span className="flex items-center gap-1 bg-gray-800 px-2 py-1 rounded">
@@ -145,20 +140,23 @@ export default function ProjectsPage() {
                     <GitFork className="w-4 h-4" /> {repo.forks_count}
                   </span>
                 </div>
-                {repo.homepage && (
-                  <a
-                    href={repo.homepage}
-                    target="_blank"
-                    className="inline-block mt-2 px-3 py-1 text-sm bg-green-600 text-white rounded hover:bg-green-700 transition"
-                  >
-                    View Live
-                  </a>
-                )}
+
+                <a
+                  href={repo.homepage || repo.html_url}
+                  target="_blank"
+                  className={`inline-block mt-4 px-3 py-1 text-sm rounded font-medium transition ${
+                    repo.homepage
+                      ? "bg-green-600 text-white hover:bg-green-700"
+                      : "bg-gray-600 text-gray-200 hover:bg-gray-700"
+                  }`}
+                >
+                  {repo.homepage ? "View Live" : "View Code"}
+                </a>
 
                 <p className="text-gray-500 text-xs mt-2">
                   Updated: {new Date(repo.updated_at).toLocaleDateString()}
                 </p>
-              </div>
+              </motion.div>
             ))}
           </div>
         )}

@@ -1,90 +1,112 @@
-import { Github, Mail, Twitter } from "lucide-react";
-import Link from "next/link";
+"use client";
 
-function Footer() {
+import { Github, Linkedin, Mail, Twitter } from "lucide-react";
+import Link from "next/link";
+import { motion } from "framer-motion";
+
+export default function Footer() {
+  const fadeUp = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 },
+  };
+
   return (
-    <footer className="mt-20 border-t bg-gray-50 dark:bg-gray-900">
-      <div className="max-w-6xl mx-auto px-6 py-10 grid gap-8 md:grid-cols-3 text-center md:text-left">
+    <footer className="bg-[#0d0d0d] text-gray-400 mt-20">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 py-16 grid gap-12 md:grid-cols-3">
         {/* Brand / Intro */}
-        <div>
-          <h2 className="text-lg font-semibold text-gray-800 dark:text-gray-100">
-            Ugochukwu Favour
-          </h2>
-          <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
+          <h2 className="text-2xl font-bold text-cyan-400">Ugochukwu Favour</h2>
+          <p className="mt-2 text-gray-400 text-sm md:text-base">
             Let’s build something great together.
           </p>
-          <div className="flex justify-center md:justify-start mt-4 space-x-4">
-            <a
+          <div className="flex mt-4 space-x-4">
+            <Link
               href="https://github.com/Hug0-fav"
               target="_blank"
-              className="hover:text-blue-600"
+              className="hover:text-cyan-400 transition"
             >
-              <Github />
-            </a>
-            <a
+              <Github size={20} />
+            </Link>
+            <Link
               href="https://twitter.com/FavoHugo"
               target="_blank"
-              className="hover:text-blue-600"
+              className="hover:text-cyan-400 transition"
             >
-              <Twitter />
-            </a>
+              <Twitter size={20} />
+            </Link>
+            <Link
+              href="https://www.linkedin.com/in/favour-ugochukwu-77ba69358/"
+              target="_blank"
+              className="text-gray-400 hover:text-blue-500 transition"
+            >
+              <Linkedin className="w-6 h-6" />
+            </Link>
           </div>
-        </div>
+        </motion.div>
 
         {/* Quick Links */}
-        <div>
-          <h3 className="text-md font-semibold text-gray-800 dark:text-gray-100">
-            Quick Links
-          </h3>
-          <ul className="mt-3 space-y-2 text-sm text-gray-600 dark:text-gray-400">
-            <li>
-              <Link href="/" className="hover:text-blue-600">
-                Home
-              </Link>
-            </li>
-            <li>
-              <Link href="/projects" className="hover:text-blue-600">
-                Projects
-              </Link>
-            </li>
-            <li>
-              <Link href="/about" className="hover:text-blue-600">
-                About
-              </Link>
-            </li>
-            <li>
-              <Link href="/contact" className="hover:text-blue-600">
-                Contact
-              </Link>
-            </li>
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
+          <h3 className="text-lg font-semibold text-white mb-4">Quick Links</h3>
+          <ul className="space-y-2 text-gray-400">
+            {["Home", "Projects", "Blog", "Contact"].map((item) => (
+              <li key={item}>
+                <Link
+                  href={item === "Home" ? "/" : `/${item.toLowerCase()}`}
+                  className="hover:text-cyan-400 transition"
+                >
+                  {item}
+                </Link>
+              </li>
+            ))}
           </ul>
-        </div>
+        </motion.div>
 
         {/* Contact Info */}
-        <div>
-          <h3 className="text-md font-semibold text-gray-800 dark:text-gray-100">
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
+          <h3 className="text-lg font-semibold text-white mb-4">
             Get in Touch
           </h3>
-          <p className="mt-3 text-sm text-gray-600 dark:text-gray-400">
-            Need advice? Have a question? Let me know, I’ll be happy to assist!
+          <p className="text-gray-400 text-sm md:text-base leading-relaxed">
+            Need advice or have a question? Let me know—I’d be happy to help!
           </p>
-          <a
+          <Link
             href="mailto:favourugochukwu548@gmail.com"
-            className="flex items-center justify-center md:justify-start mt-3 hover:text-blue-600"
+            className="flex items-center gap-2 mt-3 hover:text-cyan-400 transition"
           >
-            <Mail className="w-4 h-4" />
-            <span className="ml-2">favourugochukwu548@gmail.com</span>
-          </a>
-        </div>
+            <Mail size={18} />
+            <span className="text-gray-400 text-sm md:text-base">
+              favourugochukwu548@gmail.com
+            </span>
+          </Link>
+        </motion.div>
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t py-4 text-center text-xs text-gray-500 dark:text-gray-400">
-        © {new Date().getFullYear()} Ugochukwu Chidubem Favour. All rights
+      <motion.div
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="border-t border-gray-800 py-4 text-center text-xs md:text-sm text-gray-500"
+      >
+        &copy; {new Date().getFullYear()} Ugochukwu Chidubem Favour. All rights
         reserved.
-      </div>
+      </motion.div>
     </footer>
   );
 }
-
-export default Footer;
