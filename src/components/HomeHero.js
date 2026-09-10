@@ -9,255 +9,459 @@ const fadeUp = {
   visible: { opacity: 1, y: 0 },
 };
 
+const projects = [
+  {
+    title: "Synlo MVP",
+    role: "Frontend Lead",
+    period: "MVP Project",
+    tech: ["Next.js", "React", "Tailwind CSS"],
+    description:
+      "Led frontend development for a collaborative MVP, helping structure the frontend architecture, build reusable components, integrate APIs, and deliver responsive user experiences.",
+  },
+  {
+    title: "School Management SaaS",
+    role: "Backend Development",
+    period: "Personal Project",
+    tech: ["Node.js", "Express", "PostgreSQL", "Prisma", "JWT", "Paystack"],
+    description:
+      "Built a multi-tenant school management backend with role-based access control, school isolation, academic sessions, attendance, assessments, fees, invoices, and payment processing.",
+  },
+  {
+    title: "E-Commerce Platform",
+    role: "Full-Stack Project",
+    period: "Client Project",
+    tech: ["Next.js", "React", "Supabase", "Paystack"],
+    description:
+      "Built an e-commerce platform with authentication, product management, cart functionality, checkout, order processing, and an admin dashboard.",
+  },
+  {
+    title: "Ask a Nurse",
+    role: "Frontend Development",
+    period: "Client Project",
+    tech: ["Next.js", "React", "Supabase"],
+    description:
+      "Developed a responsive content platform with authentication, admin-controlled publishing, real-time comments, and interactive engagement features.",
+  },
+  {
+    title: "School Library REST API",
+    role: "Backend Development",
+    period: "Personal Project",
+    tech: ["Node.js", "Express", "MongoDB", "Mongoose", "JWT"],
+    description:
+      "Developed a REST API for managing books, authors, students, library attendants, borrowing, returns, and overdue records.",
+  },
+  {
+    title: "E-Commerce Backend",
+    role: "Backend Development",
+    period: "Personal Project",
+    tech: ["Node.js", "Express", "MongoDB", "Mongoose", "Paystack"],
+    description:
+      "Built a backend supporting authentication, products, carts, orders, admin operations, and Paystack payment integration.",
+  },
+];
+
+const skills = {
+  frontend: [
+    "React",
+    "Next.js",
+    "JavaScript (ES6+)",
+    "Tailwind CSS",
+    "HTML5",
+    "CSS3",
+  ],
+  backend: [
+    "Node.js",
+    "Express.js",
+    "REST APIs",
+    "JWT Authentication",
+    "Role-Based Access Control",
+    "API Integration",
+  ],
+  databases: [
+    "PostgreSQL",
+    "Prisma ORM",
+    "MongoDB",
+    "Mongoose",
+    "Supabase",
+  ],
+  tools: [
+    "Git & GitHub",
+    "Postman",
+    "Vercel",
+    "VS Code",
+    "Paystack",
+    "Joi",
+  ],
+};
+
 export default function Body() {
   return (
-    <main className="bg-[#0d0d0d] text-gray-200">
-      {/* HERO */}
-      <section className="relative bg-gradient-to-b from-[#0d0d0d] to-[#111111] py-32 px-6 md:px-12 text-center">
-        <motion.h1
-          variants={fadeUp}
-          initial="hidden"
-          animate="visible"
-          transition={{ duration: 0.6 }}
-          className="text-5xl md:text-6xl font-bold mb-6 leading-tight text-white"
-        >
-          I build <span className="text-cyan-400">scalable</span>,
-          production-ready <br /> web applications
-        </motion.h1>
+    <main className="bg-[#0d0d0d] text-gray-200 overflow-hidden">
+      {/* ================= HERO ================= */}
+      <section className="relative min-h-[90vh] flex items-center bg-gradient-to-b from-[#0d0d0d] to-[#111111] px-6 py-24 md:px-12">
+        <div className="max-w-6xl mx-auto w-full">
+          <div className="max-w-4xl">
+            <motion.p
+              variants={fadeUp}
+              initial="hidden"
+              animate="visible"
+              transition={{ duration: 0.5 }}
+              className="text-cyan-400 font-medium mb-5 tracking-wide"
+            >
+              Frontend Developer • React • Next.js
+            </motion.p>
 
-        <motion.p
-          variants={fadeUp}
-          initial="hidden"
-          animate="visible"
-          transition={{ delay: 0.15 }}
-          className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto mb-10 leading-relaxed"
-        >
-          I’m Favour — a frontend developer specializing in React & Next.js. I
-          create interfaces that are clean, responsive, and optimized for
-          performance.
-        </motion.p>
+            <motion.h1
+              variants={fadeUp}
+              initial="hidden"
+              animate="visible"
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-7 leading-[1.08] text-white"
+            >
+              I build modern web experiences that{" "}
+              <span className="text-cyan-400">work.</span>
+            </motion.h1>
 
-        <motion.div
-          variants={fadeUp}
-          initial="hidden"
-          animate="visible"
-          transition={{ delay: 0.3 }}
-          className="flex flex-wrap justify-center gap-6 mb-12"
-        >
-          <Link
-            href="/projects"
-            className="px-8 py-3 bg-cyan-500 text-black font-semibold rounded-md hover:bg-cyan-600 transition"
+            <motion.p
+              variants={fadeUp}
+              initial="hidden"
+              animate="visible"
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="text-base md:text-lg lg:text-xl text-gray-400 max-w-3xl leading-relaxed mb-10"
+            >
+              I&apos;m Favour, a frontend developer specializing in React and
+              Next.js. I build clean, responsive interfaces and have backend
+              development experience with Node.js, Express, databases, and
+              real-world API integrations.
+            </motion.p>
+
+            <motion.div
+              variants={fadeUp}
+              initial="hidden"
+              animate="visible"
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="flex flex-wrap gap-4"
+            >
+              <Link
+                href="/projects"
+                className="px-7 py-3.5 bg-cyan-500 text-black font-semibold rounded-lg hover:bg-cyan-400 transition-colors"
+              >
+                View My Work
+              </Link>
+
+              <Link
+                href="https://github.com/hugo-fav"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-7 py-3.5 border border-gray-700 text-white font-medium rounded-lg hover:bg-white/5 hover:border-gray-500 transition-all"
+              >
+                GitHub
+              </Link>
+            </motion.div>
+          </div>
+
+          {/* AI Animated Hero */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.96 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="mt-20"
           >
-            View Projects
-          </Link>
-
-          <Link
-            href="https://github.com/hugo-fav"
-            target="_blank"
-            className="px-8 py-3 border border-gray-600 rounded-md hover:bg-gray-800 transition"
-          >
-            GitHub
-          </Link>
-        </motion.div>
-
-        {/* AI Animated Hero */}
-        <AIAnimatedHero />
+            <AIAnimatedHero />
+          </motion.div>
+        </div>
       </section>
 
-      {/* EXPERIENCE & WORK */}
-      <section className="py-20 px-6 md:px-12 bg-[#111111] relative">
-        <motion.h2
-          variants={{
-            hidden: { opacity: 0, y: 24 },
-            visible: { opacity: 1, y: 0 },
-          }}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="text-3xl md:text-4xl font-semibold mb-16 text-center text-white"
-        >
-          Experience & Work
-        </motion.h2>
+      {/* ================= SELECTED WORK ================= */}
+      <section className="py-24 px-6 md:px-12 bg-[#111111]">
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="max-w-2xl mb-16"
+          >
+            <p className="text-cyan-400 text-sm font-medium uppercase tracking-wider mb-3">
+              Selected Work
+            </p>
 
-        <div className="relative">
-          {/* Vertical timeline line */}
-          <div className="absolute left-5 md:left-10 top-0 bottom-0 w-1 bg-gray-700 opacity-30"></div>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-5">
+              Projects built to solve real problems.
+            </h2>
 
-          <div className="space-y-16 ml-10 md:ml-16">
-            <ExperienceItem
-              title="Freelance Frontend Developer"
-              period="2023 — Present"
-              tech={["React", "Next.js", "Tailwind", "Supabase"]}
-              description="Delivered multiple responsive web applications for clients, transforming designs into polished, production-ready interfaces. Improved user engagement and performance by optimizing component structure and load times."
+            <p className="text-gray-400 leading-relaxed">
+              A selection of frontend and backend projects showcasing how I
+              approach interfaces, APIs, authentication, databases, and
+              real-world application workflows.
+            </p>
+          </motion.div>
+
+          <div className="space-y-6">
+            {projects.map((project, index) => (
+              <ProjectCard
+                key={project.title}
+                project={project}
+                index={index}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ================= SKILLS ================= */}
+      <section className="py-24 px-6 md:px-12 bg-[#0d0d0d]">
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="max-w-2xl mb-16"
+          >
+            <p className="text-cyan-400 text-sm font-medium uppercase tracking-wider mb-3">
+              Skills & Tools
+            </p>
+
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-5">
+              The tools I use to build.
+            </h2>
+
+            <p className="text-gray-400 leading-relaxed">
+              My strongest area is frontend development, while my backend
+              experience allows me to understand and build the systems behind
+              the interfaces I create.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <SkillBlock
+              title="Frontend"
+              description="Building responsive, component-driven interfaces."
+              items={skills.frontend}
             />
 
-            <ExperienceItem
-              title="E-commerce Platform"
-              period="Client Project"
-              tech={["React", "Next.js", "Supabase", "Stripe / Paystack"]}
-              description="Built a full-stack online store with secure authentication, checkout, and admin dashboard. Focused on scalability, clean UI, and real-world workflows for product management and order processing."
+            <SkillBlock
+              title="Backend"
+              description="Building APIs, authentication systems, and application logic."
+              items={skills.backend}
             />
 
-            <ExperienceItem
-              title="Ask a Nurse"
-              period="Client Project"
-              tech={["React", "Next.js", "Supabase"]}
-              description="Developed a client blogging platform with authentication, real-time comments, and like/dislike system. Implemented a fully responsive design, ensuring seamless user experience and engagement."
+            <SkillBlock
+              title="Databases"
+              description="Working with both SQL and NoSQL data systems."
+              items={skills.databases}
             />
 
-            <ExperienceItem
-              title="Graphic Designer Portfolio"
-              period="Client Project"
-              tech={["React", "Next.js", "Supabase"]}
-              description="Created a portfolio system with admin-only content management. Enabled categorized uploads, streamlined image management, and delivered a clean, professional showcase for creative works."
+            <SkillBlock
+              title="Tools & Integrations"
+              description="Tools and services used throughout development."
+              items={skills.tools}
             />
           </div>
         </div>
       </section>
 
-      <section className="py-24 px-6 md:px-12 bg-[#0d0d0d] text-center">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-4xl md:text-5xl font-bold text-white mb-6"
-        >
-          Ready to see my work?
-        </motion.h2>
-
-        {/* <motion.p
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.15 }}
-          className="text-gray-400 text-lg md:text-xl mb-10 max-w-2xl mx-auto"
-        >
-          I build scalable, responsive, and production-ready web applications.
-          Explore my projects and see how I turn designs into reliable digital
-          experiences.
-        </motion.p> */}
-
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
-        >
-          <Link
-            href="/projects"
-            className="px-10 py-4 bg-cyan-500 text-black font-semibold rounded-md hover:bg-cyan-600 transition text-lg"
+      {/* ================= HOW I BUILD ================= */}
+      <section className="py-24 px-6 md:px-12 bg-[#111111]">
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center max-w-2xl mx-auto mb-16"
           >
-            View Projects
-          </Link>
-        </motion.div>
+            <p className="text-cyan-400 text-sm font-medium uppercase tracking-wider mb-3">
+              My Approach
+            </p>
+
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-5">
+              How I build
+            </h2>
+
+            <p className="text-gray-400 leading-relaxed">
+              I focus on creating applications that are not only visually
+              polished, but also structured to be maintained and extended.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <ApproachCard
+              number="01"
+              title="Clean Architecture"
+              description="I structure applications around reusable components, clear responsibilities, and maintainable code."
+            />
+
+            <ApproachCard
+              number="02"
+              title="Real-World Functionality"
+              description="I go beyond static interfaces by implementing authentication, APIs, databases, dashboards, and application workflows."
+            />
+
+            <ApproachCard
+              number="03"
+              title="Continuous Improvement"
+              description="I continuously improve my skills by building increasingly complex projects and learning better development practices."
+            />
+          </div>
+        </div>
       </section>
 
-      {/* SKILLS */}
-      <section className="py-28 px-6 md:px-12 bg-[#111111]">
-        <motion.h2
-          variants={{
-            hidden: { opacity: 0, y: 24 },
-            visible: { opacity: 1, y: 0 },
-          }}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="text-3xl md:text-4xl font-semibold mb-16 text-center text-white"
-        >
-          Skills & Tools
-        </motion.h2>
+      {/* ================= CTA ================= */}
+      <section className="relative py-28 px-6 md:px-12 bg-[#0d0d0d] text-center">
+        <div className="max-w-3xl mx-auto">
+          <motion.p
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="text-cyan-400 text-sm font-medium uppercase tracking-wider mb-4"
+          >
+            Explore More
+          </motion.p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-12">
-          <SkillBlock
-            title="Frontend"
-            items={["React", "Next.js", "Tailwind CSS", "Styled Components"]}
-          />
-          <SkillBlock
-            title="Backend"
-            items={[
-              "Supabase",
-              "API Integration",
-              "Learning: Node.js & Express",
-            ]}
-          />
-          <SkillBlock
-            title="Tools"
-            items={[
-              "Git & Version Control",
-              "Vercel Deployment",
-              // "Learning: Stripe / Paystack",
-            ]}
-          />
+          <motion.h2
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="text-4xl md:text-5xl font-bold text-white mb-6"
+          >
+            Want to see what I&apos;ve built?
+          </motion.h2>
+
+          <motion.p
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            transition={{ delay: 0.15 }}
+            className="text-gray-400 text-lg leading-relaxed mb-10"
+          >
+            Explore my projects to see the interfaces, systems, and
+            applications I&apos;ve worked on.
+          </motion.p>
+
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+          >
+            <Link
+              href="/projects"
+              className="inline-flex px-8 py-4 bg-cyan-500 text-black font-semibold rounded-lg hover:bg-cyan-400 transition-colors"
+            >
+              Explore Projects
+            </Link>
+          </motion.div>
         </div>
       </section>
     </main>
   );
 }
 
-/* ---------- Components ---------- */
-function ExperienceItem({ title, period, description, tech = [] }) {
+/* ================= PROJECT CARD ================= */
+
+function ProjectCard({ project, index }) {
   return (
-    <motion.div
-      variants={{
-        hidden: { opacity: 0, y: 24 },
-        visible: { opacity: 1, y: 0 },
-      }}
+    <motion.article
+      variants={fadeUp}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}
-      transition={{ duration: 0.5 }}
-      className="relative bg-[#1a1a1a] p-6 md:p-8 rounded-xl shadow-md hover:shadow-lg transition transform hover:-translate-y-1"
+      transition={{ duration: 0.5, delay: index * 0.05 }}
+      className="group bg-[#1a1a1a] border border-white/5 rounded-2xl p-6 md:p-8 hover:border-cyan-400/20 transition-all duration-300"
     >
-      {/* Timeline Dot */}
-      <span className="absolute -left-8 md:-left-10 top-8 w-4 h-4 bg-cyan-400 rounded-full border-2 border-gray-700"></span>
+      <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
+        <div className="flex-1">
+          <div className="flex flex-wrap items-center gap-3 mb-3">
+            <h3 className="text-xl md:text-2xl font-semibold text-white">
+              {project.title}
+            </h3>
 
-      <div className="flex flex-col md:flex-row md:justify-between md:items-center mb-3">
-        <h3 className="text-xl md:text-2xl font-semibold text-white">
-          {title}
-        </h3>
-        <span className="text-sm md:text-base text-gray-400 mt-2 md:mt-0">
-          {period}
-        </span>
-      </div>
+            <span className="text-xs text-cyan-400 bg-cyan-400/10 border border-cyan-400/10 px-2.5 py-1 rounded-full">
+              {project.role}
+            </span>
+          </div>
 
-      {tech.length > 0 && (
-        <div className="flex flex-wrap gap-2 mb-3">
-          {tech.map((t) => (
+          <p className="text-sm text-gray-500 mb-4">{project.period}</p>
+
+          <p className="text-gray-400 leading-relaxed max-w-3xl">
+            {project.description}
+          </p>
+        </div>
+
+        <div className="flex flex-wrap gap-2 lg:max-w-xs lg:justify-end">
+          {project.tech.map((technology) => (
             <span
-              key={t}
-              className="text-cyan-400 text-xs md:text-sm bg-[#0d0d0d] px-2 py-1 rounded-md border border-gray-700"
+              key={technology}
+              className="text-xs text-gray-300 bg-[#0d0d0d] border border-gray-800 px-3 py-1.5 rounded-md"
             >
-              {t}
+              {technology}
             </span>
           ))}
         </div>
-      )}
+      </div>
+    </motion.article>
+  );
+}
 
-      <p className="text-sm md:text-base text-gray-300 leading-relaxed">
-        {description}
-      </p>
+/* ================= SKILL BLOCK ================= */
+
+function SkillBlock({ title, description, items }) {
+  return (
+    <motion.div
+      variants={fadeUp}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      className="bg-[#1a1a1a] border border-white/5 rounded-2xl p-7 hover:border-cyan-400/20 transition-all duration-300"
+    >
+      <h3 className="text-xl font-semibold text-white mb-2">{title}</h3>
+
+      <p className="text-sm text-gray-500 mb-6">{description}</p>
+
+      <div className="flex flex-wrap gap-2">
+        {items.map((item) => (
+          <span
+            key={item}
+            className="text-sm text-gray-300 bg-[#0d0d0d] border border-gray-800 px-3 py-2 rounded-md"
+          >
+            {item}
+          </span>
+        ))}
+      </div>
     </motion.div>
   );
 }
 
-function SkillBlock({ title, items }) {
+/* ================= APPROACH CARD ================= */
+
+function ApproachCard({ number, title, description }) {
   return (
     <motion.div
-      variants={{
-        hidden: { opacity: 0, y: 24 },
-        visible: { opacity: 1, y: 0 },
-      }}
+      variants={fadeUp}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}
-      className="bg-[#1a1a1a] p-6 rounded-xl shadow-md hover:shadow-lg transition transform hover:-translate-y-1"
+      className="bg-[#1a1a1a] border border-white/5 rounded-2xl p-7 hover:border-cyan-400/20 transition-all duration-300"
     >
-      <h4 className="font-semibold text-white mb-4">{title}</h4>
-      <ul className="space-y-2 text-sm md:text-base text-gray-300">
-        {items.map((item) => (
-          <li key={item} className="flex items-center gap-2">
-            <span className="text-cyan-400 font-bold">•</span> {item}
-          </li>
-        ))}
-      </ul>
+      <span className="text-cyan-400 text-sm font-semibold">{number}</span>
+
+      <h3 className="text-xl font-semibold text-white mt-5 mb-3">
+        {title}
+      </h3>
+
+      <p className="text-gray-400 leading-relaxed text-sm md:text-base">
+        {description}
+      </p>
     </motion.div>
   );
 }
